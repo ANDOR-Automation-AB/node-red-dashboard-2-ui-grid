@@ -62,6 +62,11 @@ module.exports = function (RED) {
                         base.stores.data.save(base, node, data)
                         msg.affectedRows = before - after
                     }
+                    else if (Array.isArray(msg.payload)) {
+                        data = msg.payload;
+                        base.stores.data.set(base, node, data);
+                        msg.affectedRows = data.length;
+                    }
                 }
                 send(msg)
                 done && done()
