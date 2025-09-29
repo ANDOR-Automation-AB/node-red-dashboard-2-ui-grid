@@ -1,0 +1,38 @@
+{
+    "name": "@andor-automation/node-red-dashboard-2-ui-grid",
+    "version": "0.1.0",
+    "description": "A node for viewing editable grid",
+    "keywords": [
+        "node-red",
+        "node-red-dashboard-2",
+        "contrib",
+        "grid"
+    ],
+    "scripts": {
+        "build": "vite build"
+    },
+    "dependencies": {
+        "vue": "^3.5.22"
+    },
+    "devDependencies": {
+        "@vitejs/plugin-vue": "^6.0.1",
+        "vite": "^7.1.7",
+        "vite-plugin-css-injected-by-js": "^3.5.2",
+        "vite-plugin-static-copy": "^3.1.2"
+    },
+    "node-red": {
+        "version": ">=3.0.0",
+        "nodes": {
+            "ui-grid": "nodes/ui-grid.js"
+        }
+    },
+    "node-red-dashboard-2": {
+        "version": "0.8.0",
+        "widgets": {
+            "ui-grid": {
+                "output": "ui-grid.umd.js",
+                "component": "UIGrid"
+            }
+        }
+    }
+}
