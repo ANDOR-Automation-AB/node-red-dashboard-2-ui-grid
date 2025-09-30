@@ -1,6 +1,6 @@
 {
     "name": "@andor-automation/node-red-dashboard-2-ui-grid",
-    "version": "0.1.0",
+    "version": "0.1.1",
     "description": "A node for viewing editable grid",
     "keywords": [
         "node-red",
@@ -10,7 +10,9 @@
     ],
     "scripts": {
         "build": "vite build",
-        "pack": "mv $(npm pack) ui-grid.tgz"
+        "patch": "npm version patch --no-git-tag-version && npm run build && npm pack",
+        "minor": "npm version minor --no-git-tag-version && npm run build && npm pack",
+        "major": "npm version major --no-git-tag-version && npm run build && npm pack"
     },
     "dependencies": {
         "vue": "^3.5.22"
