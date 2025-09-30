@@ -1,5 +1,5 @@
 <template>
-    <div className="ui-grid-wrapper">
+    <div class="ui-grid-wrapper">
         <table>
             <thead>
                 <tr>
@@ -18,18 +18,55 @@
 <script>
     export default {
         name: "UIGrid",
+        inject: ['$dataTracker'],
         props: {
-            msg: { type: Object, required: true }
+            id:    { type: String, required: true      },
+            props: { type: Object, default: () => ({}) },
+            state: { type: Object, default: () => ({}) }
+        },
+        data() { 
+            return { 
+                localData: [] 
+            }
         },
         computed: {
             rows() {
-                return Array.isArray(this.msg?.payload) ? this.msg.payload : []
+                return this.localData
             },
             columns() {
-                if (this.rows.length > 0) {
-                    return Object.keys(this.rows[0])
+                if (this.localData.length > 0) {
+                    const set = new Set()
+                    for (const r of this.localData) {
+                        Object.keys(r).forEach(k => set.add(k))
+                    }
+                    return [...set]
                 }
                 return []
+            }
+        },
+        created () {
+            this.$dataTracker(this.id, this.onMsgInput, this.onLoad)
+        },
+        methods: {
+            formatPayload (value) {
+                if (value !== null && typeof value !== 'undefined') {
+                    if (typeof value === 'object' && !Array.isArray(value)) {
+                        return [value]
+                    }
+                }
+                return value
+            },
+            onMsgInput (msg) {
+                const value = this.formatPayload(msg?.payload)
+                if (this.props.action === 'append') {
+                    this.localData = value && value.length ? [...this.localData, ...value] : this.localData
+                } else {
+                    this.localData = value || []
+                }
+            },
+            onLoad (history) {
+                this.localData = []
+                this.onMsgInput(history)
             }
         }
     }

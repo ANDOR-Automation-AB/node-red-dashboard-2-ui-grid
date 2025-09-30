@@ -9,7 +9,8 @@
         "grid"
     ],
     "scripts": {
-        "build": "vite build"
+        "build": "vite build",
+        "pack": "mv $(npm pack) ui-grid.tgz"
     },
     "dependencies": {
         "vue": "^3.5.22"
