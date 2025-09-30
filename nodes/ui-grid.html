@@ -24,7 +24,7 @@
         outputs: 1,
         icon: "file.svg",
         label: function() {
-            return this.name || "ui-example";
+            return this.name || "ui-grid";
         },
         oneditprepare: function () {
             $('#node-input-size').elementSizer({
@@ -46,7 +46,7 @@
         <input type="text" id="node-input-group">
     </div>
     <div class="form-row">
-        <label><i class="fa fa-object-group"></i> <span data-i18n="ui-example.label.size"></label>
+        <label><i class="fa fa-object-group"></i> Size</label>
         <input type="hidden" id="node-input-width">
         <input type="hidden" id="node-input-height">
         <button class="editor-button" id="node-input-size"></button>
