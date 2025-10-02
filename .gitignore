@@ -1,6 +1,7 @@
 node_modules
 dist
 resources
+scripts
 
 package-lock.json
 *.tgz
