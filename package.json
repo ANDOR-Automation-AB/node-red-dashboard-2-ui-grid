@@ -1,6 +1,6 @@
 {
     "name": "@andor-automation/node-red-dashboard-2-ui-grid",
-    "version": "0.1.1",
+    "version": "0.1.3",
     "description": "A node for viewing editable grid",
     "keywords": [
         "node-red",
@@ -10,9 +10,9 @@
     ],
     "scripts": {
         "build": "vite build",
-        "patch": "npm version patch --no-git-tag-version && npm run build && npm pack",
-        "minor": "npm version minor --no-git-tag-version && npm run build && npm pack",
-        "major": "npm version major --no-git-tag-version && npm run build && npm pack"
+        "patch": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/install-wsl.ps1 patch",
+        "minor": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/install-wsl.ps1 minor",
+        "major": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/install-wsl.ps1 major"
     },
     "dependencies": {
         "vue": "^3.5.22"
